@@ -65,13 +65,26 @@ public class GeometricObject {
 	}
 
 	public boolean equals(Object thatObject) {
-		if(thatObject instanceof GeometricObject) {
-			GeometricObject that = (GeometricObject)thatObject;
-			return that.width==this.width && this.height ==that.height && this.pos.equals(that.pos);
+		if (thatObject instanceof GeometricObject) {
+			GeometricObject that = (GeometricObject) thatObject;
+			return that.width == this.width && this.height == that.height && this.pos.equals(that.pos);
 		}
 		return false;
 	}
-	
+
+	public boolean equalPoints(Object thatObject) {
+		if (thatObject instanceof GeometricObject) {
+			GeometricObject that = (GeometricObject) thatObject;
+			if ((pos.x - that.width) < that.pos.x && that.pos.x < (pos.x + this.width + that.width)
+					&& (pos.y - that.height) < that.pos.y && that.pos.y < (pos.y + this.height + that.height)) {
+				return true;
+			}
+
+		}
+
+		return false;
+	}
+
 	public double getWidht() {
 		return width;
 
